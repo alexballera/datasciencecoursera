@@ -1,4 +1,4 @@
-## Instalamos Bioconductor
+Instalamos Bioconductor
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install()
