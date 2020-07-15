@@ -7,7 +7,7 @@ X[,1]
 X[,"var2"]
 X[1:2, "var2"]
 
-# Logica "and" & "or"
+# Logic "and" & "or"
 X[(X$var1 <= 3 & X$var3 > 11),]
 X[(X$var1 <= 3 | X$var3 > 15),]
 
