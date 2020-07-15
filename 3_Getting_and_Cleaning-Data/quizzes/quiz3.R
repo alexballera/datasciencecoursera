@@ -49,5 +49,30 @@ nrow(mergedDT)
 # What is the 13th country in the resulting data frame?
 mergedDT[order(-Rank)][13,.(Economy)]
 
+## Q4
+# "High income: OECD" 
+mergedDT[`Income Group` == "High income: OECD"
+         , lapply(.SD, mean)
+         , .SDcols = c("Rank")
+         , by = "Income Group"]
+
+# Answer:
+#
+#         Income Group     Rank
+# 1: High income: OECD 32.96667
+
+# "High income: nonOECD"
+mergedDT[`Income Group` == "High income: nonOECD"
+         , lapply(.SD, mean)
+         , .SDcols = c("Rank")
+         , by = "Income Group"]
+
+## Q5
+install.packages('dplyr')
+library('dplyr')
+
+breaks <- quantile(mergedDT[, Rank], probs = seq(0, 1, 0.2), na.rm = TRUE)
+mergedDT$quantileGDP <- cut(mergedDT[, Rank], breaks = breaks)
+mergedDT[`Income Group` == "Lower middle income", .N, by = c("Income Group", "quantileGDP")]
 
 
